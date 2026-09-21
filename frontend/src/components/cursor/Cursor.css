@@ -1,0 +1,311 @@
+/* ==========================================
+   Hide Native Cursor
+========================================== */
+
+@media (pointer: fine) {
+
+  html,
+  body,
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [data-cursor] {
+
+    cursor: none !important;
+
+  }
+
+}
+
+
+/* ==========================================
+   Common
+========================================== */
+
+.cursor-ring,
+.cursor-dot {
+
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  user-select: none;
+
+  will-change: transform, opacity;
+
+}
+
+
+/* ==========================================
+   Dot
+========================================== */
+
+.cursor-dot {
+
+  width: 5px;
+
+  height: 5px;
+
+  border-radius: 999px;
+
+  z-index: 999999;
+
+  opacity: 0;
+
+  background: #E11D48;
+
+  box-shadow:
+      0 0 8px rgba(225,29,72,.65),
+      0 0 16px rgba(225,29,72,.25);
+
+  transition:
+      opacity .22s ease,
+      background .25s ease;
+
+}
+
+
+/* ==========================================
+   Ring
+========================================== */
+
+.cursor-ring {
+
+  width: 18px;
+
+  height: 18px;
+
+  border-radius: 999px;
+
+  opacity: 0;
+
+  z-index: 999998;
+
+  border: 1px solid rgba(255,255,255,.18);
+
+  background: rgba(255,255,255,.02);
+
+  backdrop-filter: blur(5px);
+
+  -webkit-backdrop-filter: blur(5px);
+
+  transition:
+      opacity .22s ease,
+      border-color .25s ease,
+      background .25s ease,
+      width .25s ease,
+      height .25s ease;
+
+}
+
+
+/* ==========================================
+   Visible
+========================================== */
+
+.cursor-visible {
+
+  opacity: 1;
+
+}
+
+
+/* ==========================================
+   Hover
+========================================== */
+
+.cursor-hover {
+
+  width: 24px;
+
+  height: 24px;
+
+  border-color: rgba(236,72,153,.75);
+
+  background: rgba(236,72,153,.06);
+
+  box-shadow:
+      0 0 16px rgba(236,72,153,.18);
+
+}
+
+
+/* ==========================================
+   Ripple
+========================================== */
+
+.cursor-ring::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -5px;
+
+  border-radius: inherit;
+
+  border: 1px solid rgba(236,72,153,.12);
+
+  opacity: 0;
+
+}
+
+
+.cursor-hover::after{
+
+  animation:ringPulse .8s ease-out infinite;
+
+}
+
+
+@keyframes ringPulse{
+
+  from{
+
+      transform:scale(.85);
+
+      opacity:.45;
+
+  }
+
+  to{
+
+      transform:scale(1.45);
+
+      opacity:0;
+
+  }
+
+}
+
+
+/* ==========================================
+   Selection
+========================================== */
+
+::selection{
+
+  background:rgba(225,29,72,.28);
+
+  color:white;
+
+}
+
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (pointer: coarse){
+
+  .cursor-dot,
+  .cursor-ring{
+
+      display:none;
+
+  }
+
+}
+
+
+/* ==========================================
+   Trail
+========================================== */
+
+.cursor-trail{
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:10px;
+    height:10px;
+
+    border-radius:999px;
+
+    pointer-events:none;
+
+    z-index:999997;
+
+    background:radial-gradient(
+        circle,
+        rgba(225,29,72,.30),
+        rgba(225,29,72,0)
+    );
+
+    filter:blur(2px);
+
+    will-change:transform;
+
+    opacity:0;
+
+}
+
+/* ==========================================
+   Particles
+========================================== */
+
+.cursor-particles {
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 999996;
+
+}
+
+.cursor-particle {
+
+  position: fixed;
+
+  border-radius: 999px;
+
+  background: #E11D48;
+
+  box-shadow:
+      0 0 6px rgba(225,29,72,.8),
+      0 0 12px rgba(225,29,72,.35);
+
+  animation: cursorParticle .55s ease-out forwards;
+
+  will-change: transform, opacity;
+
+}
+
+@keyframes cursorParticle {
+
+  from {
+
+    opacity: .9;
+
+    transform:
+      translate(-50%, -50%)
+      translate(0,0)
+      scale(1);
+
+  }
+
+  to {
+
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      translate(var(--x), var(--y))
+      scale(.2);
+
+  }
+
+}
+

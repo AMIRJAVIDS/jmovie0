@@ -1,0 +1,105 @@
+@import "vazirmatn/Vazirmatn-font-face.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-gray-900 text-gray-100;
+  font-family: "Vazirmatn", system-ui, sans-serif;
+  direction: rtl;
+}
+
+h1, h2, h3 {
+  font-family: "Vazirmatn", system-ui, sans-serif;
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+
+/* =====================================================
+   Premium Scrollbar
+===================================================== */
+
+/* Chrome / Edge / Brave / Opera */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid #090909;
+
+  background: linear-gradient(
+    180deg,
+    #991B1B 0%,
+    #BE123C 45%,
+    #7F1D1D 100%
+  );
+
+  transition: all .3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: linear-gradient(
+    180deg,
+    #BE123C,
+    #E11D48,
+    #991B1B
+  );
+
+}
+
+::-webkit-scrollbar-corner{
+  background:#090909;
+}
+
+
+/* Firefox */
+
+*{
+
+  scrollbar-width: thin;
+
+  scrollbar-color:#BE123C #090909;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.03),
+            rgba(255,255,255,.01)
+        );
+
+}
+
+
+/* ✅ راه‌حل با Tailwind */
+.some-class {
+  @apply bg-gradient-to-b from-[#C1121F] via-[#9D174D] to-[#7F1D1D];
+  @apply shadow-[inset_0_0_6px_rgba(255,255,255,.08),_0_0_12px_rgba(190,24,93,.35)];
+}
