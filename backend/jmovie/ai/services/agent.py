@@ -1,7 +1,7 @@
 import json
 
-# from .openrouter import OpenRouterService
-from .nvidia import NVIDIAService
+from .openrouter import OpenRouterService
+# from .nvidia import NVIDIAService
 from ai.tools.definitions import TOOLS
 from ai.tools.movie_search import search_local_movies
 from ai.tools.movie_request import create_movie_request
@@ -12,8 +12,8 @@ from .tool_formatter import format_local_search_result
 class JMovieAgent:
 
     def __init__(self):
-        # self.ai = OpenRouterService()  # OpenRouter
-        self.ai = NVIDIAService()  # NVIDIA
+        self.ai = OpenRouterService()  # OpenRouter
+        # self.ai = NVIDIAService()  # NVIDIA
 
     def run(self, user_message: str, history=None):
 

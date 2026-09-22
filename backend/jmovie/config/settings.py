@@ -208,23 +208,23 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 import dj_database_url
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+# DATABASE_URL = os.environ.get("DATABASE_URL")
 
-if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.parse(
-            DATABASE_URL,
-            conn_max_age=600,
-            ssl_require=True,
-        )
+# if DATABASE_URL:
+#     DATABASES = {
+#         "default": dj_database_url.parse(
+#             DATABASE_URL,
+#             conn_max_age=600,
+#             ssl_require=True,
+#         )
+#     }
+# else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 
 # DATABASES = {
@@ -280,16 +280,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # openrouter config
-# OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-NVIDIA_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
 
 # OPENROUTER_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
-NVIDIA_MODEL = "nvidia/nemotron-3-super-120b-a12b"
-# OPENROUTER_MODEL = os.getenv('OPENROUTER_MODEL')
-#     "nvidia/nemotron-3-ultra-550b-a55b",
-#     "nvidia/nemotron-3-nano-30b-a3b"
-# )
-
+# NVIDIA_MODEL = "nvidia/nemotron-3-super-120b-a12b"
+OPENROUTER_MODEL = os.getenv('OPENROUTER_MODEL')
+NVIDIA_MODEL = os.getenv('NVIDIA_MODEL')
 
 
 
