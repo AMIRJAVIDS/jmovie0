@@ -235,6 +235,7 @@ DATABASES = {
 }
 
 
+# # sqlite for local
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
