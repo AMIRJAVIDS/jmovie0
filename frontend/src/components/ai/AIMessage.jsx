@@ -3,6 +3,9 @@ import {
   User,
 } from 'lucide-react'
 
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
 import AIMovieCard from './AIMovieCard'
 
 const AIMessage = ({ message }) => {
@@ -27,7 +30,9 @@ const AIMessage = ({ message }) => {
             text-white
           "
         >
-          {message.content}
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {message.content}
+          </ReactMarkdown>
         </div>
 
         <div
@@ -86,10 +91,9 @@ const AIMessage = ({ message }) => {
       >
 
         {message.content && (
-          <div className="whitespace-pre-wrap break-words">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {message.content}
-          </div>
-        )}
+          </ReactMarkdown>        )}
 
         {message.type === 'media_results' &&
           message.items?.map((item, index) => (
